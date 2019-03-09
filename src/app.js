@@ -77,6 +77,7 @@ app.get('/weather', (req, res) => {
       url: `https://api.darksky.net/forecast/${key}/${latitude},${longitude}`,
       json: true
     }, (error, {body}) => {
+      console.log(body.currently);
       // if there is an error, or no connection.
       if(error) {
         res.send('Unable to connect to weather service');
@@ -84,7 +85,13 @@ app.get('/weather', (req, res) => {
       } else if(body.code === 400) {
         res.send({error: body.error});
       } else {
-        res.send(`The temperature is currently ${body.currently.temperature}, chances of rain are ${body.currently.precipProbability}%.`);
+        res.send(
+          {
+            forecast: `The weather is ${body.currently.summary}`, 
+            temperature: body.currently.temperature, 
+            rainProbability: body.currently.precipProbability
+          }
+        );
       }
     })
   }).catch(() => {
