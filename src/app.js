@@ -52,11 +52,14 @@ app.get('/weather', (req, res) => {
     request({
       url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(req.query.address)}.json?access_token=${token}`,
       json: true
-    }, (error, {body, statusCode}) => {
+    }, (error, {body, statusCode} = {}) => {
       // if there is an error, or no connection reject the promise.
       if(error) {
         reject();
     
+      } else if(statusCode === 401) {
+        res.send('There is an issue with the token/API key');
+        return;
       // in case the status code is 404, (in case someone submits an empty query) or if there are no results for the query.
       } else if(statusCode === 404 || body.features.length === 0) {
         res.send('Could not find location in database');
@@ -71,13 +74,12 @@ app.get('/weather', (req, res) => {
         resolve({"longitude": longitude, "latitude": latitude});  
       }
     })
-  }).then(({longitude, latitude}) => {
+  }).then(({longitude, latitude} = {}) => {
     // once the promise resolves, make request to the weather API.
     request({
       url: `https://api.darksky.net/forecast/${key}/${latitude},${longitude}`,
       json: true
     }, (error, {body}) => {
-      console.log(body.currently);
       // if there is an error, or no connection.
       if(error) {
         res.send('Unable to connect to weather service');
