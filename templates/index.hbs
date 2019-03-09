@@ -2,4 +2,14 @@
     
     <h1>{{title}}</h1>
 
+    {{>nav}}
+
+    <form id="weather-finder">
+      <label>Enter Location:</label>
+      <input type="text" placeholder="location" id="location" name="location">
+      <button class="submit">Submit</button>
+    </form>
+
+    <div id="results"></div>
+
     {{>footer}}

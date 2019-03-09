@@ -1,7 +1,63 @@
 body {
-  font-size: 16px;
+  font-size: 20px;
+  line-height: 1.7em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 30px;
 }
 
 h1 {
   font-size: 30px;
+  margin:15px;
+}
+
+nav {
+  margin-bottom: 4vh;
+  padding: 1vh 0;
+  background: #003366;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul li:not(:first-of-type) {
+  margin-left: 2vw;
+}
+
+nav ul li a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+form {
+  margin: 15px;
+}
+
+input { 
+  display: block;
+  width: 50%;
+  padding: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  border: 3px #222 solid;
+  font-size: 30px;
+}
+
+label {
+  font-size: 30px;
+}
+
+.submit {
+  padding: 20px;
+  font-size: 20px;
+  margin-top: 20px;
+  background: #003366;
+  color: #fff;
 }
