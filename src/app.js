@@ -5,8 +5,8 @@ const express = require('express');
 const hbs = require('hbs');
 const request = require('request');
 
-const token = process.env.token;
-const key = process.env.key;
+const token = process.env.TOKEN;
+const key = process.env.KEY;
 const port = process.env.PORT || 3000;
 
 const app = express();
