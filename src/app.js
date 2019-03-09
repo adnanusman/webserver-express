@@ -7,6 +7,7 @@ const request = require('request');
 
 const token = process.env.token;
 const key = process.env.key;
+const port = process.env.PORT || 3000;
 
 const app = express();
 
@@ -113,6 +114,6 @@ app.get('*', (req, res) => {
   })
 })
 
-app.listen(3000, () => {
-  console.log('Server is listening at port 3000');
+app.listen(port, () => {
+  console.log(`Server is listening at port ${port}`);
 });
