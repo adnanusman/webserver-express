@@ -27,11 +27,18 @@ class WeatherFinder {
         return response.json();
       }
     }).then((data) => {
-      this.renderData(data);
+      // if error then render error, else render the data.
+      data.error ? this.renderError(data.error) : this.renderData(data);
     })
   }
 
-  renderData = (data) => {
+  renderError = (error) => {
+    const resultsDiv = document.getElementById('results');
+
+    resultsDiv.innerHTML = `<p>Error: ${error}</p>`;
+  }
+
+  renderData = (data) => { 
     const resultsDiv = document.getElementById('results');
 
     resultsDiv.innerHTML = `
