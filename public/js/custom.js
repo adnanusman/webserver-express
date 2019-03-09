@@ -10,8 +10,15 @@ class WeatherFinder {
       e.preventDefault();        
       const location = document.getElementById('location');
 
+      this.displayLoading();
       this.getWeather(location.value);
     });
+  }
+
+  displayLoading = () => {
+    const resultsDiv = document.getElementById('results');
+
+    resultsDiv.innerHTML = 'Loading...';
   }
 
   getWeather = (location) => {
